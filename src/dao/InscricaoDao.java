@@ -183,4 +183,19 @@ public class InscricaoDao {
 			return true;			
 		}				
 	}
+	
+	public ArrayList<Inscricao> inscricoes_de_um_corredor(int corredor) throws SQLException{
+		ArrayList<Inscricao> retorno = new ArrayList<Inscricao>();
+		Map<String, Object> mapping = new HashMap<>();
+		mapping.put( "id_corredor",  corredor);
+		
+		for(String item : dao.findBy(mapping))
+		{			
+			String inscricao[] = new String[5];
+			inscricao = item.split(",");
+			retorno.add(new Inscricao(Integer.parseInt(inscricao[1]),Integer.parseInt(inscricao[4]),Integer.parseInt(inscricao[0]),inscricao[3],inscricao[2]));
+		}
+		return retorno;		
+	}
+	
 }

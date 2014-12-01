@@ -93,9 +93,9 @@ public class CorredorDao {
 			}			
 			Collections.sort(inteiros);			
 			retorno=inteiros.get(inteiros.size()-1)+1;			
-			for(int i = 1; i < inteiros.size(); i++) {
-				if((inteiros.get(i-1)+1)!=inteiros.get(i)){
-					retorno=inteiros.get(i);
+			for(int i = 0; i < inteiros.size(); i++) {
+				if((inteiros.get(i))!=(i+1)){
+					retorno=i+1;
 					i=inteiros.size();
 				} 
 			}

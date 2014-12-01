@@ -1,5 +1,10 @@
 package classes;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import dao.InscricaoDao;
+
 public class Corredor {
 	private int id_corredor;	
 	private String nome;
@@ -44,6 +49,10 @@ public class Corredor {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	public ArrayList<Inscricao> getInscricoes(InscricaoDao inscricaodao) throws SQLException {		
+		return inscricaodao.inscricoes_de_um_corredor(this.id_corredor);
 	}
 
 	@Override

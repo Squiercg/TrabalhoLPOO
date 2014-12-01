@@ -1,5 +1,11 @@
 package classes;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import dao.Corrida_ModalidadeDao;
+import dao.ModalidadeDao;
+
 public class Corrida {
 	private int id_corrida;	
 	private String nome;
@@ -39,6 +45,23 @@ public class Corrida {
 	public void setLocal(String local) {
 		this.local = local;
 	}
+	
+	public ArrayList<Modalidade> getModalidade(Corrida_ModalidadeDao corrida_modalidadedao, ModalidadeDao modalidadedao) throws SQLException{
+		
+		System.out.println("teste");
+		
+		ArrayList<Integer> modalidades_ids = corrida_modalidadedao.findBy_idcorrida(this.id_corrida);
+		ArrayList<Modalidade> saida = new ArrayList<Modalidade>();		
+		
+		for(int i : modalidades_ids ) {
+			saida.add(modalidadedao.findBy_id(i));
+		}
+		
+		return saida;
+		
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Corrida [ID = " + id_corrida + ", Nome = " + nome
